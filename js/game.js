@@ -15,7 +15,7 @@ class Game {
 
         this.hp = 100;
         this.ammo = 50;
-        this.money = 0;
+        this.money = 10;
         this.rotation = 0;
         this.rotationSpeed = 8;
         this.defaultSpeed = 4;
