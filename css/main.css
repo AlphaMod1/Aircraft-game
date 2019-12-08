@@ -12,6 +12,7 @@ body {
     padding: 30px 30px 65px 30px;
     width: 800px;
     height: 600px;
+    border: gray 2px solid;
 }
 
 #border {
@@ -35,7 +36,7 @@ body {
     justify-content: center;
 }
 
-.stats div {
+.stats>div {
     display: inline-flex;
     color: #fff;
     padding: 0 20px;
@@ -43,7 +44,7 @@ body {
 
 .stats>*>* {
     padding: 0 2px;
-    font-size:25px
+    font-size: 25px
 }
 
 .fa-plus {
@@ -56,6 +57,21 @@ body {
 
 .fa-usd {
     color: rgb(253, 215, 0);
+}
+
+#out-of-ammo {
+    position: fixed;
+    bottom: 150px;
+    color: #fff;
+    background: rgba(255, 0, 0, 0.363);
+    padding: 20px 10px;
+    border-radius: 20px;
+    font-weight: 900;
+    visibility: hidden;
+}
+
+#out-of-ammo>.fa-warning {
+    color: rgb(221, 221, 0);
 }
 
 #player {

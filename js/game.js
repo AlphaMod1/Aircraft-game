@@ -11,6 +11,7 @@ class Game {
         this.hpHTML = document.querySelector('#hp > span:nth-child(2)');
         this.ammoHTML = document.querySelector('#ammo > span:nth-child(2)');
         this.moneyHTML = document.querySelector('#money > span:nth-child(2)');
+        this.outOfAmmoHTML = document.getElementById('out-of-ammo');
 
         this.hp = 100;
         this.ammo = 50;
@@ -24,6 +25,8 @@ class Game {
         this.leftSpeed = 0;
         this.playerAttackSpeed = 30;
         this.playerAttackSpeedReset = 70;
+        this.outOfAmmoMsgLifeSpan = 99999;
+        this.outOfAmmoMsgMaxLifeSpan = 120;
         this.keyMap = { 65: false, 68: false, 87: false, 32: false, 80: false };
         this.mapTexture = 'Animation_Water.gif';
         this.mapTextureString = 'url(../img/map/' + this.mapTexture + ')';
@@ -99,7 +102,7 @@ class Game {
     }
     fire() {
         if (this.ammo <= 0) {
-            return; //out of ammo warning tba
+            return this.outOfAmmoMsgLifeSpan = 0;
         }
         if(this.playerAttackSpeedReset <= this.playerAttackSpeed){
             return;
@@ -109,9 +112,19 @@ class Game {
         this.updateStats();
         this.playerAttackSpeedReset = 0;
     }
+    outOfAmmoShow(){
+        this.outOfAmmoMsgLifeSpan++;
+        if(this.outOfAmmoMsgLifeSpan < this.outOfAmmoMsgMaxLifeSpan){
+            this.outOfAmmoHTML.style.visibility = 'visible';
+        }
+        else{
+            this.outOfAmmoHTML.style.visibility = 'hidden';
+        }
+    }
     engine() {
         this.fly();
         this.playerAttackSpeedReset++;
+        this.outOfAmmoShow();
         window.requestAnimationFrame(() => { this.engine() });
     }
     fly() {
