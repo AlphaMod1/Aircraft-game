@@ -1,0 +1,36 @@
+.rocket {
+    width: 8px;
+    height: 14px;
+    position: absolute;
+}
+
+.rocket-player {
+    background-image: url('../img/rockets/player.png');
+}
+
+.rocket-enemy1 {
+    background-image: url('../img/rockets/enemy1.png');
+}
+
+.rocket-enemy2 {
+    background-image: url('../img/rockets/enemy2.png');
+}
+
+.rocket-enemy3 {
+    background-image: url('../img/rockets/enemy3.png');
+}
+
+#out-of-ammo {
+    position: fixed;
+    bottom: 150px;
+    color: #fff;
+    background: rgba(255, 0, 0, 0.363);
+    padding: 20px 10px;
+    border-radius: 20px;
+    font-weight: 900;
+    visibility: hidden;
+}
+
+#out-of-ammo>.fa-warning {
+    color: rgb(221, 221, 0);
+}

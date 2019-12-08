@@ -1,0 +1,66 @@
+.expl-1 {
+    background-image: url('../img/explosion/e1.png');
+}
+
+.expl-2 {
+    background-image: url('../img/explosion/e2.png');
+}
+
+.expl-3 {
+    background-image: url('../img/explosion/e3.png');
+}
+
+.expl-4 {
+    background-image: url('../img/explosion/e4.png');
+}
+
+.expl-5 {
+    background-image: url('../img/explosion/e5.png');
+}
+
+.expl-6 {
+    background-image: url('../img/explosion/e6.png');
+}
+
+.expl-7 {
+    background-image: url('../img/explosion/e7.png');
+}
+
+.expl-8 {
+    background-image: url('../img/explosion/e8.png');
+}
+
+.expl-9 {
+    background-image: url('../img/explosion/e9.png');
+}
+
+.expl-10 {
+    background-image: url('../img/explosion/e10.png');
+}
+
+.expl-11 {
+    background-image: url('../img/explosion/e11.png');
+}
+
+.expl-12 {
+    background-image: url('../img/explosion/e12.png');
+}
+
+.expl-13 {
+    background-image: url('../img/explosion/e13.png');
+}
+
+.expl-14 {
+    background-image: url('../img/explosion/e14.png');
+}
+
+.expl-15 {
+    background-image: url('../img/explosion/e15.png');
+}
+
+.expl {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-size: cover;
+}
