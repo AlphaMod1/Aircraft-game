@@ -72,3 +72,17 @@ body {
     transform-origin: 0 0;
 }
 
+#current-level {
+    position: fixed;
+    top: 100px;
+    color: #fff;
+    background: rgba(179, 179, 179, 0.363);
+    padding: 20px 10px;
+    border-radius: 20px;
+    font-weight: 900;
+    visibility: hidden;
+}
+
+#current-level>.fa-level-up {
+    color: rgb(108, 255, 50);
+}

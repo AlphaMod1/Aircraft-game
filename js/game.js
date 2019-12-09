@@ -12,6 +12,8 @@ class Game {
         this.ammoHTML = document.querySelector('#ammo > span:nth-child(2)');
         this.moneyHTML = document.querySelector('#money > span:nth-child(2)');
         this.outOfAmmoHTML = document.getElementById('out-of-ammo');
+        this.levelHTML = document.getElementById('current-level');
+        this.levelCountHTML = document.querySelector('#current-level > span');
 
         this.hp = 100;
         this.ammo = 50;
@@ -25,11 +27,16 @@ class Game {
         this.leftSpeed = 0;
         this.playerAttackSpeed = 30;
         this.playerAttackSpeedReset = 70;
-        this.outOfAmmoMsgLifeSpan = 99999;
+        this.outOfAmmoMsgLifeSpan = 999;
         this.outOfAmmoMsgMaxLifeSpan = 120;
         this.keyMap = { 65: false, 68: false, 87: false, 32: false, 80: false };
         this.mapTexture = 'Animation_Water.gif';
         this.mapTextureString = 'url(../img/map/' + this.mapTexture + ')';
+        this.gameLevel = 1;
+        this.nextLevelCounter = 0;
+        this.nextLevelCounterMax = 10800;
+        this.msgLevelCounter = 0;
+        this.msgLevelCounterMax = 120;
     }
     init() {
         this.screenHTML.style.backgroundImage = this.mapTextureString;
@@ -49,6 +56,16 @@ class Game {
         this.hpHTML.innerHTML = this.hp;
         this.ammoHTML.innerHTML = this.ammo;
         this.moneyHTML.innerHTML = this.money;
+    }
+    displayCurrentLevel() {
+        this.msgLevelCounter++;
+        if (this.msgLevelCounter < this.msgLevelCounterMax) {
+            this.levelCountHTML.innerHTML = 'Current Level:' + this.gameLevel;
+            this.levelHTML.style.visibility = 'visible';
+        }
+        else {
+            this.levelHTML.style.visibility = 'hidden';
+        }
     }
     pauseGame() {
 
@@ -104,7 +121,7 @@ class Game {
         if (this.ammo <= 0) {
             return this.outOfAmmoMsgLifeSpan = 0;
         }
-        if(this.playerAttackSpeedReset <= this.playerAttackSpeed){
+        if (this.playerAttackSpeedReset <= this.playerAttackSpeed) {
             return;
         }
         new Rocket('player', this.rotation).init();
@@ -112,16 +129,27 @@ class Game {
         this.updateStats();
         this.playerAttackSpeedReset = 0;
     }
-    outOfAmmoShow(){
+    outOfAmmoShow() {
         this.outOfAmmoMsgLifeSpan++;
-        if(this.outOfAmmoMsgLifeSpan < this.outOfAmmoMsgMaxLifeSpan){
+        if (this.outOfAmmoMsgLifeSpan < this.outOfAmmoMsgMaxLifeSpan) {
             this.outOfAmmoHTML.style.visibility = 'visible';
         }
-        else{
+        else {
             this.outOfAmmoHTML.style.visibility = 'hidden';
         }
     }
+    checkLevel() {
+        this.nextLevelCounter++;
+        if (this.nextLevelCounter > this.nextLevelCounterMax) {
+            this.gameLevel++;
+            this.nextLevelCounter = 0;
+            this.msgLevelCounter = 0;
+            this.displayCurrentLevel();
+        }
+    }
     engine() {
+        this.displayCurrentLevel();
+        this.checkLevel();
         this.fly();
         this.playerAttackSpeedReset++;
         this.outOfAmmoShow();
