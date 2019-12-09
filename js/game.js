@@ -18,6 +18,7 @@ class Game {
         this.hp = 100;
         this.ammo = 50;
         this.money = 10;
+        this.maxHp = 100;
         this.rotation = 0;
         this.rotationSpeed = 8;
         this.defaultSpeed = 4;
@@ -53,7 +54,7 @@ class Game {
         this.screenHTML.style.border = '25px solid red';
     }
     updateStats() {
-        this.hpHTML.innerHTML = this.hp;
+        this.hpHTML.innerHTML = this.hp + '/' + this.maxHp;
         this.ammoHTML.innerHTML = this.ammo;
         this.moneyHTML.innerHTML = this.money;
     }
@@ -138,15 +139,6 @@ class Game {
             this.outOfAmmoHTML.style.visibility = 'hidden';
         }
     }
-    checkLevel() {
-        this.nextLevelCounter++;
-        if (this.nextLevelCounter > this.nextLevelCounterMax) {
-            this.gameLevel++;
-            this.nextLevelCounter = 0;
-            this.msgLevelCounter = 0;
-            this.displayCurrentLevel();
-        }
-    }
     engine() {
         this.displayCurrentLevel();
         this.checkLevel();
@@ -159,6 +151,15 @@ class Game {
         this.topSpeed = (Math.sin((this.rotation + 90) / 180 * Math.PI) * this.speed) * -1;
         this.leftSpeed = (Math.cos((this.rotation + 90) / 180 * Math.PI) * this.speed) * -1;
         this.borderHTML.scrollBy(this.leftSpeed, this.topSpeed);
+    }
+    checkLevel() {
+        this.nextLevelCounter++;
+        if (this.nextLevelCounter > this.nextLevelCounterMax) {
+            this.gameLevel++;
+            this.nextLevelCounter = 0;
+            this.msgLevelCounter = 0;
+            this.displayCurrentLevel();
+        }
     }
 }
 
