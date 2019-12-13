@@ -32,12 +32,14 @@ class Game {
         this.outOfAmmoMsgMaxLifeSpan = 120;
         this.keyMap = { 65: false, 68: false, 87: false, 32: false, 80: false };
         this.mapTexture = 'Animation_Water.gif';
-        this.mapTextureString = 'url(../img/map/' + this.mapTexture + ')';
+        this.mapTextureString = 'url(./img/map/' + this.mapTexture + ')';
         this.gameLevel = 1;
         this.nextLevelCounter = 0;
         this.nextLevelCounterMax = 10800;
         this.msgLevelCounter = 0;
         this.msgLevelCounterMax = 120;
+
+        this.init();
     }
     init() {
         this.screenHTML.style.backgroundImage = this.mapTextureString;
@@ -48,7 +50,6 @@ class Game {
         window.requestAnimationFrame(() => { this.engine() });
     }
     centerStage() {
-        this.bodyHTML.style.display = 'block';
         this.borderHTML.scrollLeft = this.screenHTML.offsetWidth / 2;
         this.borderHTML.scrollTop = this.screenHTML.offsetHeight / 2;
         this.screenHTML.style.border = '25px solid red';
